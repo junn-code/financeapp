@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f5f6f8">
+  <title>Finora — Wealth, with clarity.</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <header class="top-shell">
+    <a class="brand" href="#" aria-label="Finora home"><span class="brand-mark">f.</span><span>finora</span></a>
+    <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+      <button class="nav-link active" data-page="overview" data-i18n="navOverview">Overview</button>
+      <button class="nav-link" data-page="transactions" data-i18n="navTransactions">Transactions</button>
+      <button class="nav-link" data-page="accounts" data-i18n="navAccounts">Accounts</button>
+      <button class="nav-link" data-page="assets" data-i18n="navAssets">Assets</button>
+      <button class="nav-link" data-page="investments" data-i18n="navInvestments">Investments</button>
+      <button class="nav-link" data-page="budgets" data-i18n="navBudgets">Budgets</button>
+      <button class="nav-link" data-page="reports" data-i18n="navReports">Reports</button>
+    </nav>
+    <div class="toolbar">
+      <div class="segmented currency-switch"><button data-currency="MYR" class="selected">MYR</button><button data-currency="SGD">SGD</button></div>
+      <div class="segmented language-switch"><button data-lang="en" class="selected">EN</button><button data-lang="zh">中文</button><button data-lang="bm">BM</button></div>
+      <button class="icon-button" id="themeToggle" title="Toggle theme" aria-label="Toggle theme">◐</button>
+      <button class="primary-button" id="addTransaction">＋ <span data-i18n="addTransaction">Add transaction</span></button>
+    </div>
+  </header>
+
+  <main class="page-wrap">
+    <section class="greeting">
+      <div class="eyebrow" id="todayLabel"></div>
+      <h1 id="greetingTitle">Good evening.</h1>
+      <p data-i18n="greetingSub">A clearer view of your financial world.</p>
+    </section>
+    <div id="pageContent"></div>
+    <footer><span>FINORA</span><span data-i18n="demoNotice">Demo workspace · Sample data only</span></footer>
+  </main>
+
+  <dialog id="transactionDialog" class="modal">
+    <form id="transactionForm" method="dialog">
+      <div class="modal-head"><div><div class="eyebrow" data-i18n="newEntry">NEW ENTRY</div><h2 data-i18n="addTransaction">Add transaction</h2></div><button type="button" class="icon-button" id="closeDialog">×</button></div>
+      <input type="hidden" id="editId">
+      <div class="form-grid">
+        <label><span data-i18n="type">Type</span><select id="txType"><option value="income">Income</option><option value="expense">Expense</option><option value="transfer">Transfer</option></select></label>
+        <label><span data-i18n="amount">Amount</span><input id="txAmount" type="number" min="0.01" step="0.01" required placeholder="0.00"></label>
+        <label class="wide"><span data-i18n="description">Description</span><input id="txDescription" required maxlength="80" placeholder="e.g. Monthly salary"></label>
+        <label><span data-i18n="category">Category</span><select id="txCategory"><option>Salary</option><option>Food</option><option>Transport</option><option>Bills</option><option>Shopping</option><option>Health</option><option>Investment</option><option>Other</option></select></label>
+        <label><span data-i18n="account">Account</span><select id="txAccount"></select></label>
+        <label id="toAccountWrap" class="wide hidden"><span data-i18n="toAccount">To account</span><select id="txToAccount"></select></label>
+        <label><span data-i18n="date">Date</span><input id="txDate" type="date" required></label>
+        <label><span data-i18n="currency">Currency</span><select id="txCurrency"><option>MYR</option><option>SGD</option></select></label>
+      </div>
+      <p class="form-error" id="formError" role="alert"></p>
+      <div class="modal-actions"><button type="button" class="secondary-button" id="cancelDialog" data-i18n="cancel">Cancel</button><button type="submit" class="primary-button" data-i18n="saveTransaction">Save transaction</button></div>
+    </form>
+  </dialog>
+  <script src="translations.js"></script>
+  <script src="data.js"></script>
+  <script src="storage.js"></script>
+  <script src="finance.js"></script>
+  <script src="charts.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

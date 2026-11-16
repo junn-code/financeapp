@@ -171,6 +171,7 @@
       <div class="no-print" style="text-align:right;margin-top:18px"><button onclick="window.print()" style="border:0;background:#263d52;color:#fff;padding:11px 18px;border-radius:6px;font-weight:600;cursor:pointer">Print / Save as PDF</button></div>
       </main><script>window.addEventListener('load',()=>setTimeout(()=>window.print(),350));</script></body></html>`);
     w.document.close();
+    w.focus();
   }
   function assetsPage() {
     const total=FinoraFinance.totals(state,state.settings.currency);
